@@ -11,20 +11,19 @@ jobs:
   build:
   
     runs-on: ubuntu-latest
-
-      steps:
-        - uses: actions/checkout@v2
-        - name: Set up JDK 11
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK 11
         uses: actions/setup-java@v2
         with:
           java-version: '11'
           distribution: 'adopt'
-        - name: Build with Maven
+      - name: Build with Maven
         run: mvn -B package --file desa-tp/pom.xml
   
   deploy-dev:
     runs-on: ubuntu-latest
-    enviroment: 
+    environment: 
       name: dev
     needs: build
     steps:
@@ -32,14 +31,14 @@ jobs:
       
   deploy-homo:
     runs-on: ubuntu-latest
-    enviroment: 
+    environment: 
       name: homo
     needs: build
     steps:
       - run: Echo deploy homo
   deploy-prod:
     runs-on: ubuntu-latest
-    enviroment: 
+    environment: 
       name: prod
     needs: build
     steps:
