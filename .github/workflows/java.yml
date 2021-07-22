@@ -76,7 +76,7 @@ jobs:
         path: target/desa-0.0.1-SNAPSHOT.jar
 
   docker:
-    needs: sonar
+    needs: build
     
     runs-on: ubuntu-latest
     
