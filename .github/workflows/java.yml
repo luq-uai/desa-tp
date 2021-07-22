@@ -75,5 +75,12 @@ jobs:
         #From this path
         path: target/desa-0.0.1-SNAPSHOT.jar
 
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+
     
 
