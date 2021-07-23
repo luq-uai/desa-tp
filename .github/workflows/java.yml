@@ -1,4 +1,4 @@
-name: Java CI with Maven
+name: Java CI/CD
 
 on:
   push:
@@ -52,7 +52,7 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
   
-  build:
+  artifact:
     needs: sonar
     name: Build
     runs-on: ubuntu-latest
@@ -75,15 +75,47 @@ jobs:
         #From this path
         path: target/desa-0.0.1-SNAPSHOT.jar
 
-  docker:
-    needs: build
-    
+  build:
     runs-on: ubuntu-latest
-    
+
     steps:
     - uses: actions/checkout@v2
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+
+    - name: Set up Java version
+      uses: actions/setup-java@v1
+      with:
+        java-version: '11'
+
+    - name: Build with Maven
+      run: mvn clean install
+
+    - name: Upload artifact for deployment job
+      uses: actions/upload-artifact@v2
+      with:
+        name: java-app
+        path: '${{ github.workspace }}/target/*.jar'
+  
+  deploy-azure:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: 'production'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+
+    steps:
+    - name: Download artifact from build job
+      uses: actions/download-artifact@v2
+      with:
+        name: java-app
+
+    - name: Deploy to Azure Web App
+      id: deploy-to-webapp
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'tp-desa'
+        slot-name: 'production'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_3a9a4df98eae4e64a874854da19f536e }}
+        package: '*.jar'
 
     
 
