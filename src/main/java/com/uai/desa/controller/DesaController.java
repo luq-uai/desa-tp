@@ -8,7 +8,7 @@ public class DesaController {
 
 	@RequestMapping(value = "/")
 	public String teste() {
-		return "Hello World";
+		return "Hello World. Lucas capo";
 	}
 
 }
