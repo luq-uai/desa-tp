@@ -8,7 +8,11 @@ public class DesaController {
 
 	@RequestMapping(value = "/")
 	public String teste() {
-		return "Hello World. Lucas capo";
+		
+		String html = "<h1>TP de Diseño y Arquitectura de Software</h1>";
+		html = html + "<h2>Lucas Freire</h2>;
+			
+		return html;
 	}
 
 }
