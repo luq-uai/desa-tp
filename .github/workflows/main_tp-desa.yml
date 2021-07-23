@@ -4,9 +4,7 @@
 name: Build and deploy JAR app to Azure Web App - tp-desa
 
 on:
-  push:
-    branches:
-      - main
+  
   workflow_dispatch:
 
 jobs:
