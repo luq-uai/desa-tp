@@ -1,0 +1,19 @@
+package com.uai.desa.controller;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+
+public class DesaControllerTest {
+
+	@Autowired
+	private DesaController controller;
+
+	@Test
+	public void test() {
+		String teste = controller.teste();
+		assertNotNull(teste);
+	}
+
+}
