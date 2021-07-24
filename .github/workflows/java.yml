@@ -54,7 +54,7 @@ jobs:
     environment: 
       name: prod
     needs: sonar
-    name: Build
+    name: build-artifact
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
