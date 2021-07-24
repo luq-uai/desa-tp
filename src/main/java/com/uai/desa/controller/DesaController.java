@@ -10,11 +10,11 @@ public class DesaController {
 	public String teste() {
 		StringBuilder html = new StringBuilder();
 		html.append("<h1>TP de Diseño y Arquitectura de Software</h1>");
-		html.append("<h2>Christian Chamula</h2>"); 
-		html.append("<h2>Lorena Fuentes</h2>"); 
-		html.append("<h2>Lucas Freire</h2>"); 
-		html.append("<h2>Mariano Bucher</h2>"); 
-		html.append("<h2>Fernando Coronilla</h2>");  
+		html.append("<ul><li>Christian Chamula</li>"); 
+		html.append("<li>Lorena Fuentes</li>"); 
+		html.append("<li>Lucas Freire</li>"); 
+		html.append("<li>Mariano Bucher</li>"); 
+		html.append("<li>Fernando Coronilla</li></ul>");  
 			
 		return html.toString();
 	}
