@@ -10,7 +10,7 @@ public class DesaController {
 	public String teste() {
 		
 		String html = "<h1>TP de Diseño y Arquitectura de Software</h1>";
-		html = html + "<h2>Lucas Freire</h2>";
+		html = html + "<h2>Lucas Freire</h2>"; 
 			
 		return html;
 	}
