@@ -14,7 +14,7 @@ public class DesaController {
 		html.append("<h2>Lorena Fuentes</h2>"); 
 		html.append("<h2>Lucas Freire</h2>"); 
 		html.append("<h2>Mariano Boucher</h2>"); 
-		html.append("<h2>Fernando Coronilla</h2>"); 
+		html.append("<h2>Fernando Coronilla</h2>");  
 			
 		return html.toString();
 	}
